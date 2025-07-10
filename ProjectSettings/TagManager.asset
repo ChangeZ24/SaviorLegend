@@ -47,6 +47,9 @@ TagManager:
   - name: MiddleBg
     uniqueID: 1456914691
     locked: 0
+  - name: Player
+    uniqueID: 2792778035
+    locked: 0
   - name: FrontBg
     uniqueID: 176146509
     locked: 0
