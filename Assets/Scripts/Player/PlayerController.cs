@@ -9,15 +9,21 @@ public class PlayerController : MonoBehaviour
     public Vector2 moveDirection;
     private Rigidbody2D rb;
     private SpriteRenderer playerRenderer;
+
+    [Header("基础属性")]
     public float speed;
+    public float jumpForce;
 
     // Awake：生命周期最早的方法之一。
     // 脚本实例被加载时调用（比如场景刚加载、对象刚创建时），适合做变量初始化、获取组件等操作。
     private void Awake()
     {
-        inputControl = new PlayerInputControl();
         rb = GetComponent<Rigidbody2D>();
         playerRenderer = GetComponent<SpriteRenderer>();
+        inputControl = new PlayerInputControl();
+        // 事件订阅：C#中的委托和事件机制。+= 是事件订阅操作符，将Jump方法注册到Jump.started事件上。
+        // 当玩家按下跳跃键时，会自动调用Jump方法。这是观察者模式的一种实现。
+        inputControl.Gameplay.Jump.started += Jump;
     }
 
     // OnEnable：当对象被激活（SetActive为true）或场景加载时调用。
@@ -56,5 +62,9 @@ public class PlayerController : MonoBehaviour
         // transform.localScale = new Vector3(faceDir, 1, 1);
         // 人物翻转写法2
         playerRenderer.flipX = moveDirection.x < 0;
+    }
+
+    public void Jump(InputAction.CallbackContext context) {
+        rb.AddForce(transform.up * jumpForce, ForceMode2D.Impulse);
     }
 }
