@@ -62,6 +62,15 @@ public partial class @PlayerInputControl: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""WalkButton"",
+                    ""type"": ""Button"",
+                    ""id"": ""56a3b65d-a404-444c-adc6-8cc3883797da"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -304,6 +313,28 @@ public partial class @PlayerInputControl: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
                     ""action"": ""Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""37bc43db-2ac1-47a1-8df6-1493a76220a1"",
+                    ""path"": ""<Keyboard>/leftShift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""WalkButton"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""26686386-111d-4f22-a54d-bea7ea7acebb"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""WalkButton"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -895,6 +926,7 @@ public partial class @PlayerInputControl: IInputActionCollection2, IDisposable
         m_Gameplay_Look = m_Gameplay.FindAction("Look", throwIfNotFound: true);
         m_Gameplay_Fire = m_Gameplay.FindAction("Fire", throwIfNotFound: true);
         m_Gameplay_Jump = m_Gameplay.FindAction("Jump", throwIfNotFound: true);
+        m_Gameplay_WalkButton = m_Gameplay.FindAction("WalkButton", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -972,6 +1004,7 @@ public partial class @PlayerInputControl: IInputActionCollection2, IDisposable
     private readonly InputAction m_Gameplay_Look;
     private readonly InputAction m_Gameplay_Fire;
     private readonly InputAction m_Gameplay_Jump;
+    private readonly InputAction m_Gameplay_WalkButton;
     public struct GameplayActions
     {
         private @PlayerInputControl m_Wrapper;
@@ -980,6 +1013,7 @@ public partial class @PlayerInputControl: IInputActionCollection2, IDisposable
         public InputAction @Look => m_Wrapper.m_Gameplay_Look;
         public InputAction @Fire => m_Wrapper.m_Gameplay_Fire;
         public InputAction @Jump => m_Wrapper.m_Gameplay_Jump;
+        public InputAction @WalkButton => m_Wrapper.m_Gameplay_WalkButton;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1001,6 +1035,9 @@ public partial class @PlayerInputControl: IInputActionCollection2, IDisposable
             @Jump.started += instance.OnJump;
             @Jump.performed += instance.OnJump;
             @Jump.canceled += instance.OnJump;
+            @WalkButton.started += instance.OnWalkButton;
+            @WalkButton.performed += instance.OnWalkButton;
+            @WalkButton.canceled += instance.OnWalkButton;
         }
 
         private void UnregisterCallbacks(IGameplayActions instance)
@@ -1017,6 +1054,9 @@ public partial class @PlayerInputControl: IInputActionCollection2, IDisposable
             @Jump.started -= instance.OnJump;
             @Jump.performed -= instance.OnJump;
             @Jump.canceled -= instance.OnJump;
+            @WalkButton.started -= instance.OnWalkButton;
+            @WalkButton.performed -= instance.OnWalkButton;
+            @WalkButton.canceled -= instance.OnWalkButton;
         }
 
         public void RemoveCallbacks(IGameplayActions instance)
@@ -1203,6 +1243,7 @@ public partial class @PlayerInputControl: IInputActionCollection2, IDisposable
         void OnLook(InputAction.CallbackContext context);
         void OnFire(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
+        void OnWalkButton(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

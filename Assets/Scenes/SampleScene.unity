@@ -3471,7 +3471,7 @@ Tilemap:
       - {fileID: -1256014113, guid: ad7b50b73238b4227bfcd787b8931ca9, type: 3}
       - {fileID: -771392447, guid: ad7b50b73238b4227bfcd787b8931ca9, type: 3}
       - {fileID: 151872695, guid: ad7b50b73238b4227bfcd787b8931ca9, type: 3}
-      m_AnimationSpeed: 7
+      m_AnimationSpeed: 7.0000005
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 10, y: -11, z: 0}
@@ -3669,7 +3669,7 @@ Tilemap:
       - {fileID: -765413938, guid: ad7b50b73238b4227bfcd787b8931ca9, type: 3}
       - {fileID: 95057183, guid: ad7b50b73238b4227bfcd787b8931ca9, type: 3}
       - {fileID: 1558437132, guid: ad7b50b73238b4227bfcd787b8931ca9, type: 3}
-      m_AnimationSpeed: 7.0000005
+      m_AnimationSpeed: 7
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 10, y: -5, z: 0}
@@ -3779,7 +3779,7 @@ Tilemap:
       - {fileID: -1256014113, guid: ad7b50b73238b4227bfcd787b8931ca9, type: 3}
       - {fileID: -771392447, guid: ad7b50b73238b4227bfcd787b8931ca9, type: 3}
       - {fileID: 151872695, guid: ad7b50b73238b4227bfcd787b8931ca9, type: 3}
-      m_AnimationSpeed: 7
+      m_AnimationSpeed: 7.0000005
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 11, y: -2, z: 0}
@@ -3790,7 +3790,7 @@ Tilemap:
       - {fileID: -1699164276, guid: ad7b50b73238b4227bfcd787b8931ca9, type: 3}
       - {fileID: -1867158618, guid: ad7b50b73238b4227bfcd787b8931ca9, type: 3}
       - {fileID: -1519374097, guid: ad7b50b73238b4227bfcd787b8931ca9, type: 3}
-      m_AnimationSpeed: 7
+      m_AnimationSpeed: 7.0000005
       m_AnimationTimeOffset: 0
       m_Flags: 0
   - first: {x: 12, y: -2, z: 0}
@@ -6619,8 +6619,10 @@ GameObject:
   - component: {fileID: 1109192625}
   - component: {fileID: 1109192627}
   - component: {fileID: 1109192628}
+  - component: {fileID: 1109192631}
   - component: {fileID: 1109192629}
   - component: {fileID: 1109192630}
+  - component: {fileID: 1109192632}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -6790,6 +6792,39 @@ MonoBehaviour:
   bottomOffset: {x: -0.04, y: 0}
   checkRadius: 0.08
   isGround: 1
+--- !u!95 &1109192631
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1109192624}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 903189af939b1480185c96a5d920cd4b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1109192632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1109192624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18fe30a26b9244083acc3a6aeb437e23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1117710165
 GameObject:
   m_ObjectHideFlags: 0
