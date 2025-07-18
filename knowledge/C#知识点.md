@@ -342,6 +342,53 @@ public void Jump(InputAction.CallbackContext context) {
 
 ---
 
+## 11. 条件判断 (Conditional Statement)
+
+### 语法
+```csharp
+if (physicsCheck.isGround) {
+    rb.AddForce(transform.up * jumpForce, ForceMode2D.Impulse);
+}
+```
+
+### 功能
+- 根据条件执行不同的代码分支
+- 控制程序的执行流程
+
+### 用法
+- `if`：单一条件判断
+- `if-else`：双分支判断
+- `if-else if-else`：多分支判断
+
+### 示例
+```csharp
+// 单一条件判断
+if (physicsCheck.isGround) {
+    // 只有在地面上才执行跳跃
+    rb.AddForce(transform.up * jumpForce, ForceMode2D.Impulse);
+}
+
+// 多条件判断
+if (physicsCheck.isGround && moveDirection.x != 0) {
+    // 在地面上且有移动输入时
+    speed = runSpeed;
+}
+
+// 双分支判断
+if (moveDirection.x > 0) {
+    playerRenderer.flipX = false;  // 面向右
+} else {
+    playerRenderer.flipX = true;   // 面向左
+}
+```
+
+### 相关概念
+- **逻辑运算符 (Logical Operators)**：`&&`（与）、`||`（或）、`!`（非）
+- **比较运算符 (Comparison Operators)**：`==`、`!=`、`>`、`<`、`>=`、`<=`
+- **布尔类型 (Boolean Type)**：`true` 或 `false` 值
+
+---
+
 ## 易混淆概念详解
 
 ### 1.值传递 vs 引用传递

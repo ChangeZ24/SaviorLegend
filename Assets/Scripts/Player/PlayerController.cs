@@ -102,7 +102,11 @@ public class PlayerController : MonoBehaviour
         playerRenderer.flipX = moveDirection.x < 0;
     }
 
+    // * 【Unity】跳跃方法：检测地面状态，只有在地面上才能跳跃
     public void Jump(InputAction.CallbackContext context) {
-        rb.AddForce(transform.up * jumpForce, ForceMode2D.Impulse);
+        // * 【C#】条件判断：使用逻辑运算符&&进行多条件判断
+        if (physicsCheck.isGround) {
+            rb.AddForce(transform.up * jumpForce, ForceMode2D.Impulse);
+        }
     }
 }
